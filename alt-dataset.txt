@@ -1,1 +1,3 @@
+Depression Dataset: https://www.kaggle.com/datasets/hopesb/student-depression-dataset
+
 Weather Prediction: https://www.kaggle.com/datasets/nikhil7280/weather-type-classification
