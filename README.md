@@ -8,6 +8,22 @@ El proyecto se estructura en base a las directivas estándares de un proyecto de
 
 Para conseguir lo anterior, cada etapa se trabaja en una libreta de código distinta, acompañada de un reporte final (`00_informe_final.ipynb`) donde se recapitula cada paso del proceso. 
 
+La estructura del proyecto se puede ver aquí
+```
+📦 
+├─ .gitignore
+├─ .python-version
+├─ README.md
+├─ data
+│  ├─ processed 
+│  └─ raw
+├─ notebooks
+│  ├─ 00_informe_final.ipynb
+│  ├─ 01_eda_inicial.ipynb
+│  └─ 02_data_wrangling.ipynb
+├─ pyproject.toml
+└─ uv.lock
+```
 ## 1. Manejo de Librerías y Dependencias
 
 El manejo de librerías se lleva a cabo a través de `uv`, que necesita ser instalado para facilitar la ejecución de código y descargas de librerías. El archivo `uv.lock` contiene las librerías específicas requeridas para correr el proyecto.
@@ -21,3 +37,4 @@ El dataset fue obtenido de Kaggle, del siguiente link: https://www.kaggle.com/da
 La libreta `01_eda_inicial.ipynb` contiene todo el código necesario para explorar los datos recopilados, abarcando un análisis por variables cualitativas y cuantitativas. La libreta ya tiene todo el código ejecutado, pero en ella se pueden encontrar funciones para facilitar el análisis por variable. 
 
 ## 4. Limpieza de Datos
+La libreta `02_data_wrangling.ipynb` contiene el código utilizado para la limpieza y pre-procesamiento de los datos, incluyendo el tratamiento de valores nulos, codificación de variables categóricas y la separación entre los datasets de entrenamiento y de prueba, los cuáles se pueden observar en la carpeta de `data`.
