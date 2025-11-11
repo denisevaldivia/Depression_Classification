@@ -220,7 +220,7 @@ def train_best_models(X_train, Y_train, X_test, Y_test, best_params_lr, best_par
         mlflow.log_metric('recall', recall_svc)
 
         mlflow.sklearn.log_model(
-            lr,
+            svc,
             name='model'
         )
 
