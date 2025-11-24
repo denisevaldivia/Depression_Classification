@@ -202,9 +202,11 @@ def hp_tuning_lr(X_train, X_test, y_train, y_test):
     # Start Optuna and MLflow
     def objective_lr(trial: optuna.trial.Trial):
         params = {
-            'penalty': trial.suggest_categorical('penalty', ['l2','l1','elasticnet']),
-            'solver': 'saga'
-        }
+        "penalty": trial.suggest_categorical("penalty", ["l1", "l2", "elasticnet"]),
+        "solver": "saga",
+        "tol": trial.suggest_float("tol", 1e-6, 1e-2, log=True),
+        "C": trial.suggest_float("C", 1e-3, 10.0, log=True),
+        "l1_ratio": trial.suggest_float("l1_ratio", 0.0, 1.0)}
 
         with mlflow.start_run(nested=True):
             # Preprocess data and log artifacts
@@ -262,8 +264,8 @@ def hp_tuning_svc(X_train, X_test, y_train, y_test):
 
     def objective_svc(trial: optuna.trial.Trial):
         params = {
-            'kernel': trial.suggest_categorical('kernel', ['sigmoid','poly','linear','rbf'])
-        }
+        "kernel": trial.suggest_categorical("kernel", ["linear", "rbf", "poly", "sigmoid"]),
+        "C": trial.suggest_float("C", 0.1, 10.0, log=True)}
 
         with mlflow.start_run(nested=True):
             # Preprocess data and log artifacts
@@ -502,7 +504,7 @@ def train_best_models(X_train, y_train, X_test, y_test, best_params_lr, best_par
 # ======================================
 
 @task(name='Model Registry')
-def register_champion_challenger(exp, model_registry_name="workspace.default.DepressionClassPrefect"):
+def register_champion_challenger(exp, model_registry_name="workspace.default.DepressionClassificationPrefect"):
     client = MlflowClient()
 
     # Buscar los runs candidatos ordenados por F1
@@ -552,7 +554,7 @@ def main_flow() -> None:
     
     # Load .env and Log in to Databricks
     load_dotenv(override=True)  # Carga las variables del archivo .env
-    EXPERIMENT_NAME = "/Users/pipochatgpt@gmail.com/Depression_Class_prefect"
+    EXPERIMENT_NAME = "/Users/pipochatgpt@gmail.com/Depression_Classification_prefect"
 
     mlflow.set_tracking_uri("databricks")
     experiment = mlflow.set_experiment(experiment_name=EXPERIMENT_NAME)
