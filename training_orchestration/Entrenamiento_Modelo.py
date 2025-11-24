@@ -96,8 +96,8 @@ def clean_data(df, save_data=False):
     X = df.drop(['Depression'], axis=1)
     y = df['Depression']
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.7, random_state=42)
-    X_test, X_val, y_test, y_val = train_test_split(X_test, y_test, test_size=0.66, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+    X_test, X_val, y_test, y_val = train_test_split(X_test, y_test, test_size=0.3, random_state=42)
 
     if save_data:
         # Guardar las variables 
@@ -502,7 +502,7 @@ def train_best_models(X_train, y_train, X_test, y_test, best_params_lr, best_par
 # ======================================
 
 @task(name='Model Registry')
-def register_champion_challenger(exp, model_registry_name="workspace.default.DepressionClass"):
+def register_champion_challenger(exp, model_registry_name="workspace.default.DepressionClassPrefect"):
     client = MlflowClient()
 
     # Buscar los runs candidatos ordenados por F1
@@ -552,7 +552,7 @@ def main_flow() -> None:
     
     # Load .env and Log in to Databricks
     load_dotenv(override=True)  # Carga las variables del archivo .env
-    EXPERIMENT_NAME = "/Users/pipochatgpt@gmail.com/Depression_Class"
+    EXPERIMENT_NAME = "/Users/pipochatgpt@gmail.com/Depression_Class_prefect"
 
     mlflow.set_tracking_uri("databricks")
     experiment = mlflow.set_experiment(experiment_name=EXPERIMENT_NAME)
