@@ -49,6 +49,23 @@ def preprocess(input_data):
 
     df = pd.DataFrame([input_data.dict()])
 
+    # Renombrar columnas al formato del modelo entrenado
+    df = df.rename(columns={
+        "AcademicPressure": "Academic Pressure",
+        "StudySatisfaction": "Study Satisfaction",
+        "SleepDuration": "Sleep Duration",
+        "DietaryHabits": "Dietary Habits",
+        "FamilyHistory": "Family History of Mental Illness",
+        "SuicidalThoughts": "Have you ever had suicidal thoughts ?",
+        "FinancialStress": "Financial Stress",
+        "WorkStudyHours": "Work/Study Hours"
+    })
+
+    # Re ordenar columans
+    columnas = ["Gender","Age","City","Academic Pressure","CGPA","Study Satisfaction","Sleep Duration","Dietary Habits","Degree","Have you ever had suicidal thoughts ?","Work/Study Hours","Financial Stress","Family History of Mental Illness"]
+
+    df = df[columnas]
+    
     # Aplicar el encoder de One Hot
     city_encoded = encoder.transform(df[["City"]])
     city_cols = encoder.get_feature_names_out(["City"])
@@ -80,9 +97,12 @@ class InputData(BaseModel):
     Gender: int
     Age: int
     AcademicPressure: float
+    CGPA: float
+    FinancialStress: float
     StudySatisfaction: float
     SleepDuration: int
     DietaryHabits: int
+    WorkStudyHours: float
     Degree: int
     City: str
     FamilyHistory: int
