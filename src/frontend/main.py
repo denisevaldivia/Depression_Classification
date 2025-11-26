@@ -16,7 +16,7 @@ def user_input_features():
     cgpa = st.sidebar.slider("CGPA (0-10)", 0.0, 10.0, 5.0)
     FinancialStress = st.sidebar.slider("Financial Stress (0-5)", 0.0, 5.0, 3.0)
     StudySatisfaction = st.sidebar.slider("Study Satisfaction (0-5)", 0.0, 5.0, 3.0)
-    SleepDuration = st.sidebar.selectbox("Sleep Duration (<5 hours = 0, 5-6 hours = 1, 7-8 hours = 2, >8 hours = 3)", [0, 1, 2, 3])
+    SleepDuration = st.sidebar.selectbox("Sleep Duration (0: <5 hours, 1: 5-6 hours, 2: 7-8 hours, 3: 8+ hours)", [0, 1, 2, 3])
     DietaryHabits = st.sidebar.selectbox("Dietary Habits (Healthy = 0, Unhealthy = 1, Moderate = 2)", [0, 1, 2])
     Degree = st.sidebar.selectbox("Degree (Secondary = 0, Undergraduate = 1, Postgraduate = 2, Doctorate = 3)", [0, 1, 2, 3])
     WorkStudyHours = st.sidebar.slider("Work/Study Hours (0-20)", 0.0, 20.0, 10.0)
@@ -60,3 +60,14 @@ if st.button("Predict"):
 
     else:
         st.error("Error calling the API. Check the server logs.")
+
+st.write("""
+        |  |  | Available Cities |  |  |
+        | ------ | --------- | ------------- | ----------- | --------- |
+        | Kalyan | Srinagar  | Hyderabad     | Vasai-Virar | Lucknow   |
+        | Thane  | Ludhiana  | Surat         | Agra        | Kolkata   |
+        | Jaipur | Patna     | Visakhapatnam | Ahmedabad   | Bhopal    |
+        | Pune   | Chennai   | Meerut        | Rajkot      | Bangalore |
+        | Delhi  | Ghaziabad | Mumbai        | Vadodara    | Varanasi  |
+        | Indore | Nagpur    | Kanpur        | Nashik      | Faridabad |
+         """)
