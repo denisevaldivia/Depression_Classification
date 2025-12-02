@@ -86,7 +86,7 @@ La libreta `01_eda_inicial.ipynb` contiene todo el código necesario para explor
 ## 4. Limpieza de Datos
 La libreta `02_data_wrangling.ipynb` contiene el código utilizado para la limpieza y pre-procesamiento de los datos, incluyendo el tratamiento de valores nulos, codificación de variables categóricas y la separación entre los datasets de entrenamiento y de prueba, los cuáles se pueden observar en la carpeta de `data`.
 ## 5. Modelado de datos
-La planeación del modeloado de datos se hizo en la libreta `03_training_model.ipynb`. La orquestración del modelado, desde la carga de datos hasta el registro de modelos utilizando Prefect, se puede encontrar en `training_orchestration/Entrenamiento_Modelo.py`. 
+La planeación del modelado de datos se hizo en la libreta `03_training_model.ipynb`. La orquestración del modelado, desde la carga de datos hasta el registro de modelos utilizando Prefect, se puede encontrar en `training_orchestration/Entrenamiento_Modelo.py`. 
 
 ## 6. Backend y Frontend
 El backend del proyecto (una API creada con FastAPI) se puede encontrar en el folder `src/backend` donde está el archivo .py junto con sus dependencias, los preprocesadores y el Dockerfile necesario para contenerización.
